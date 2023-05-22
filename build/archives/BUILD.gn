@@ -63,14 +63,14 @@ if (build_engine_artifacts && !is_android) {
       },
     ]
     if (flutter_runtime_mode == "debug") {
-      dll = ".so"
-      lib_prefix = "lib"
+      #dll = ".a"
+      #lib_prefix = "lib"
       if (host_os == "win") {
-        dll = ".dll"
+        #dll = ".dll"
         exe = ".exe"
-        lib_prefix = ""
+        #lib_prefix = ""
       } else if (host_os == "mac") {
-        dll = ".dylib"
+        #dll = ".dylib"
       }
       files += [
         {
@@ -99,14 +99,14 @@ if (build_engine_artifacts && !is_android) {
           source = "//flutter/impeller/compiler/shader_lib"
           destination = "shader_lib"
         },
-        {
-          source = "$root_out_dir/${lib_prefix}path_ops$dll"
-          destination = "${lib_prefix}path_ops$dll"
-        },
-        {
-          source = "$root_out_dir/libtessellator$dll"
-          destination = "libtessellator$dll"
-        },
+        #{
+        #  source = "$root_out_dir/${lib_prefix}path_ops.a"
+        #  destination = "${lib_prefix}path_ops.a"
+        #},
+        #{
+        #  source = "$root_out_dir/libtessellator.a"
+        #  destination = "libtessellator.a"
+        #},
         {
           source = "$root_gen_dir/flutter/lib/snapshot/isolate_snapshot.bin"
           destination = "isolate_snapshot.bin"

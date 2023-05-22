@@ -149,6 +149,12 @@ template("embedder_source_set") {
       ":embedder_header_config",
       "//flutter:config",
     ]
+
+    print("Sources")
+
+    foreach(i, sources) {
+      print("Source: ${i}")
+    }
   }
 }
 
@@ -377,10 +383,16 @@ if (enable_unittests) {
   }
 }
 
-shared_library("flutter_engine_library") {
+static_library("flutter_engine_library") {
   visibility = [ ":*" ]
 
   output_name = "flutter_engine"
+
+  print("$root_out_dir/libflutter_engine.a")
+
+  output_dir = root_out_dir
+
+  complete_static_lib = true
 
   ldflags = []
   if (is_mac && !embedder_for_target) {
@@ -549,10 +561,10 @@ if (host_os == "linux" || host_os == "win") {
     ]
     if (host_os == "linux") {
       files += [
-        {
-          source = "$root_out_dir/libflutter_engine.so"
-          destination = "libflutter_engine.so"
-        },
+        # {
+        #   source = "$root_out_dir/libflutter_engine.a"
+        #   destination = "libflutter_engine.A"
+        # },
       ]
     }
     if (host_os == "win") {

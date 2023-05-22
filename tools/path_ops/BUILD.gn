@@ -27,7 +27,7 @@ generated_file("path_ops_license") {
   ]
 }
 
-shared_library("path_ops") {
+static_library("path_ops") {
   sources = [
     "path_ops.cc",
     "path_ops.h",
